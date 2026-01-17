@@ -1,0 +1,216 @@
+/* ============================================
+   CAROUSEL STYLES
+   ============================================ */
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.carousel-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.3) 50%,
+            transparent 100%);
+}
+
+.carousel-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    padding: 0 var(--space-4xl);
+    animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.carousel-title {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: var(--space-md);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--gray-200);
+    margin-bottom: var(--space-2xl);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-btn {
+    padding: var(--space-md) var(--space-3xl);
+    background: var(--amazon-orange);
+    color: var(--black);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.carousel-btn:hover {
+    background: var(--amazon-orange-hover);
+    transform: scale(1.05);
+}
+
+/* Navigation Arrows */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.carousel-arrow:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.carousel-arrow-left {
+    left: 0;
+    border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+}
+
+.carousel-arrow-right {
+    right: 0;
+    border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
+}
+
+/* Indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: var(--space-2xl);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: var(--space-sm);
+    z-index: 10;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid var(--white);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.carousel-indicator.active {
+    background: var(--amazon-orange);
+    border-color: var(--amazon-orange);
+    transform: scale(1.2);
+}
+
+.carousel-indicator:hover {
+    background: var(--white);
+}
+
+/* Bottom Fade */
+.carousel-fade-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, var(--gray-100), transparent);
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carousel {
+        height: 300px;
+    }
+
+    .carousel-content {
+        padding: 0 var(--space-xl);
+    }
+
+    .carousel-title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .carousel-subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 80px;
+    }
+
+    .carousel-arrow svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel {
+        height: 250px;
+    }
+
+    .carousel-title {
+        font-size: var(--font-size-xl);
+    }
+
+    .carousel-btn {
+        padding: var(--space-sm) var(--space-xl);
+        font-size: var(--font-size-sm);
+    }
+}
