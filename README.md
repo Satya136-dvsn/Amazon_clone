@@ -1,49 +1,31 @@
 # 🛒 Amazon Clone
 
-A fully functional Amazon e-commerce clone built with React + Vite. Features a stunning UI with Amazon's signature design, complete shopping cart functionality, and user authentication.
+A **production-ready** Amazon e-commerce clone built with React + Vite frontend and a **secure Express.js backend**. Features comprehensive security measures including JWT authentication, bcrypt password hashing, rate limiting, and more.
 
-![Amazon Clone Demo](https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react)
-![Vite](https://img.shields.io/badge/Vite-Latest-646CFF?style=flat-square&logo=vite)
+![React](https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-18+-green?style=flat-square&logo=nodedotjs)
+![Express](https://img.shields.io/badge/Express-4.x-lightgrey?style=flat-square&logo=express)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 ## ✨ Features
 
-### 🏠 Homepage
+### 🏠 Frontend
 
-- Auto-playing hero carousel with promotional banners
-- Today's Deals section with discounted products
-- Best Sellers showcase
-- Category grid navigation
-- Responsive Amazon-style header with search
+- **Homepage** - Hero carousel, deals, categories
+- **Product Browsing** - Filters, sorting, search, pagination
+- **Product Details** - Image gallery, features, buy box
+- **Shopping Cart** - Add/remove/update, order summary
+- **Authentication** - Login, registration with validation
 
-### 📦 Product Browsing
+### 🔒 Backend Security
 
-- **Filter Sidebar** - Filter by category, customer rating, price range
-- **Sort Options** - Sort by price, rating, discount, bestsellers
-- **Grid/List View** - Toggle between display modes
-- **Search** - Full-text search across products
-
-### 🛍️ Product Details
-
-- Image gallery with thumbnail navigation
-- Complete product information (features, specs)
-- Buy Box with price, stock status, delivery info
-- Related products recommendations
-- Add to Cart with visual feedback
-
-### 🛒 Shopping Cart
-
-- Add, remove, and update item quantities
-- Order summary with subtotal, shipping, and tax
-- Free shipping threshold indicator
-- Persistent cart (localStorage)
-
-### 🔐 Authentication
-
-- User registration with password validation
-- Login with email/password
-- Session persistence (localStorage)
-- Protected routes for checkout
+- **JWT Authentication** - Secure tokens with HTTP-only cookies
+- **bcrypt Hashing** - 12 rounds for password security
+- **Helmet.js** - HTTP security headers
+- **Rate Limiting** - Brute force protection (5 auth attempts/15min)
+- **CORS** - Strict origin validation
+- **Input Validation** - express-validator sanitization
+- **Signed Cookies** - CSRF protection
 
 ## 🚀 Quick Start
 
@@ -57,84 +39,146 @@ A fully functional Amazon e-commerce clone built with React + Vite. Features a s
 ```bash
 # Clone the repository
 git clone https://github.com/Satya136-dvsn/Amazon_clone.git
-
-# Navigate to project directory
 cd Amazon_clone
 
-# Install dependencies
+# Install frontend dependencies
 npm install
 
-# Start development server
+# Install backend dependencies
+cd backend
+npm install
+```
+
+### Running the Application
+
+```bash
+# Terminal 1: Start backend server (port 5000)
+cd backend
+npm run dev
+
+# Terminal 2: Start frontend (port 5173)
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open [http://localhost:5173](http://localhost:5173)
 
 ## 🏗️ Project Structure
 
 ```
-src/
-├── components/
-│   ├── Header/          # Navigation bar with search
-│   ├── Footer/          # Site footer with links
-│   ├── ProductCard/     # Product display card
-│   └── Carousel/        # Hero banner slider
-├── pages/
-│   ├── Home/            # Landing page with deals
-│   ├── Products/        # Product listing with filters
-│   ├── ProductDetail/   # Single product view
-│   ├── Cart/            # Shopping cart
-│   ├── Login/           # Sign in page
-│   └── Register/        # Create account
-├── context/
-│   ├── CartContext.jsx  # Cart state management
-│   └── AuthContext.jsx  # User authentication
-├── data/
-│   └── products.js      # Sample product catalog
-└── index.css            # Global styles & design system
+├── src/                    # Frontend (React)
+│   ├── components/         # Reusable UI components
+│   ├── pages/              # Page components
+│   ├── context/            # React Context providers
+│   ├── services/           # API service layer
+│   └── data/               # Static data
+│
+├── backend/                # Backend (Express.js)
+│   ├── routes/             # API endpoints
+│   │   ├── auth.js         # Authentication routes
+│   │   ├── products.js     # Product routes
+│   │   ├── cart.js         # Cart routes
+│   │   └── orders.js       # Order routes
+│   ├── middleware/         # Express middleware
+│   │   ├── auth.js         # JWT verification
+│   │   └── validation.js   # Input validation
+│   ├── data/               # Data storage
+│   ├── server.js           # Express server
+│   └── .env.example        # Environment template
 ```
+
+## 🔐 Security Implementation
+
+### Password Security
+
+```javascript
+// 12 rounds bcrypt hashing
+const hashedPassword = await bcrypt.hash(password, 12);
+```
+
+### JWT Configuration
+
+```javascript
+// Short-lived access tokens (15 min)
+// HTTP-only cookies
+// Automatic token refresh
+```
+
+### Rate Limiting
+
+| Endpoint | Limit | Window |
+|----------|-------|--------|
+| Auth endpoints | 5 requests | 15 minutes |
+| General API | 100 requests | 15 minutes |
+
+### HTTP Headers (Helmet)
+
+- Content-Security-Policy
+- X-XSS-Protection
+- X-Content-Type-Options
+- Strict-Transport-Security
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| React 18 | UI library |
-| Vite | Build tool & dev server |
-| React Router DOM | Client-side routing |
-| Lucide React | Icon library |
-| CSS3 | Styling (no frameworks) |
-| localStorage | Data persistence |
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | React 18, Vite, React Router |
+| **Backend** | Express.js, Node.js |
+| **Auth** | JWT, bcryptjs |
+| **Security** | Helmet, CORS, express-rate-limit |
+| **Validation** | express-validator |
+| **Icons** | Lucide React |
 
-## 🎨 Design System
+## 📋 API Endpoints
 
-The app uses Amazon's signature color palette:
+### Authentication
 
-- **Primary Orange**: `#FF9900` - CTAs, highlights
-- **Navy Blue**: `#232F3E` - Header, footer
-- **Dark Blue**: `#131921` - Accents
-- **Star Yellow**: `#FFA41C` - Ratings
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/register` | Register user |
+| POST | `/api/auth/login` | Login user |
+| POST | `/api/auth/logout` | Logout user |
+| POST | `/api/auth/refresh` | Refresh token |
+| GET | `/api/auth/me` | Get current user |
 
-## 🔒 Security Considerations
+### Products
 
-### Current Implementation
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/products` | List products (with filters) |
+| GET | `/api/products/:id` | Get single product |
 
-- ✅ Input validation on forms
-- ✅ Password strength requirements
-- ✅ XSS protection via React's built-in escaping
-- ✅ No sensitive data in URLs
+### Cart (Protected)
 
-### For Production Deployment
->
-> ⚠️ **Important**: This is an educational project. For production use:
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/cart` | Get user's cart |
+| POST | `/api/cart/add` | Add item to cart |
+| PUT | `/api/cart/update/:id` | Update quantity |
+| DELETE | `/api/cart/remove/:id` | Remove item |
 
-1. **Never store passwords in localStorage** - Use secure HTTP-only cookies
-2. **Implement a backend API** - Add Express.js/Node.js server
-3. **Use proper authentication** - JWT tokens, bcrypt hashing
-4. **Add HTTPS** - SSL/TLS encryption
-5. **Environment variables** - Never commit API keys
-6. **Input sanitization** - Server-side validation
-7. **Rate limiting** - Prevent brute force attacks
-8. **CORS configuration** - Proper origin restrictions
+### Orders (Protected)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/orders` | Create order |
+| GET | `/api/orders` | Get user's orders |
+| GET | `/api/orders/:id` | Get order details |
+
+## 🔧 Environment Variables
+
+Create `backend/.env` based on `.env.example`:
+
+```env
+PORT=5000
+NODE_ENV=development
+JWT_SECRET=your-secret-key-min-32-chars
+JWT_REFRESH_SECRET=your-refresh-secret
+JWT_EXPIRES_IN=15m
+COOKIE_SECRET=your-cookie-secret
+FRONTEND_URL=http://localhost:5173
+```
+
+> ⚠️ **Never commit `.env` files to Git!**
 
 ## 📱 Responsive Design
 
@@ -144,35 +188,21 @@ Fully responsive across all devices:
 - 📱 Tablet (576px - 992px)
 - 💻 Desktop (> 992px)
 
-## 🧪 Sample Data
+## 🧪 For Production
 
-The app includes 16 sample products across categories:
+Before deploying to production:
 
-- Electronics (iPhone, MacBook, Sony headphones)
-- Fashion (Nike shoes, North Face jacket)
-- Home & Kitchen (Dyson vacuum, Instant Pot)
-- And more...
+1. ✅ Use strong, random secrets for JWT and cookies
+2. ✅ Enable HTTPS/SSL
+3. ✅ Set `NODE_ENV=production`
+4. ✅ Use a proper database (MongoDB/PostgreSQL)
+5. ✅ Configure production CORS origins
+6. ✅ Set up monitoring and logging
+7. ✅ Enable secure cookie flags
 
-## 📄 Available Scripts
+## 📄 License
 
-```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run preview  # Preview production build
-npm run lint     # Run ESLint
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is for educational purposes. Not affiliated with Amazon.
+MIT License - Educational project, not affiliated with Amazon.
 
 ## 👤 Author
 
