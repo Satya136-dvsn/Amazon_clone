@@ -1,49 +1,203 @@
-# 🛒 Amazon Clone - Production Ready
+# 🛒 Amazon Clone - Full-Stack E-Commerce Platform
 
-A **production-ready** Amazon e-commerce clone with React frontend and secure Express.js backend. Features MongoDB database, JWT authentication, and deployment configurations for Vercel + Railway.
+<div align="center">
 
-![React](https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react)
-![Node.js](https://img.shields.io/badge/Node.js-18+-green?style=flat-square&logo=nodedotjs)
-![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?style=flat-square&logo=mongodb)
-![Express](https://img.shields.io/badge/Express-4.x-lightgrey?style=flat-square&logo=express)
+![React](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-4.x-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
 
-## ✨ Features
+**A production-ready Amazon-inspired e-commerce application showcasing modern full-stack development practices**
+
+[🚀 Live Demo](https://satya136-dvsn.github.io/Amazon_clone) · [� Frontend Code](#frontend-architecture) · [🔧 Backend Code](#backend-architecture)
+
+</div>
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+<table>
+<tr>
+<td width="50%">
+
+### Homepage
+
+- Hero carousel with auto-play
+- Category navigation
+- Product grid with hover effects
+
+</td>
+<td width="50%">
+
+### Product Details
+
+- Image gallery
+- Feature highlights
+- Add to cart with quantity
+
+</td>
+</tr>
+</table>
+</div>
+
+---
+
+## ✨ Key Features
+
+### 🛍️ Shopping Experience
+
+- **Product Catalog** - Browse products with filtering by category, price, and rating
+- **Search Functionality** - Find products quickly with real-time search
+- **Shopping Cart** - Add, remove, and update quantities with persistent state
+- **Responsive Design** - Optimized for desktop, tablet, and mobile devices
+
+### 🔐 Security Implementation
+
+- **JWT Authentication** - Secure token-based auth with HTTP-only cookies
+- **Password Security** - bcrypt hashing with 12 salt rounds
+- **Rate Limiting** - Protection against brute force attacks (5 attempts/15 min)
+- **Input Validation** - Server-side sanitization with express-validator
+- **Security Headers** - Helmet.js for XSS, CSRF, and clickjacking protection
+
+### 🏗️ Architecture Highlights
+
+- **RESTful API Design** - Clean, predictable endpoint structure
+- **Context API** - Global state management for cart and authentication
+- **Mongoose ODM** - Schema-based MongoDB data modeling
+- **Error Handling** - Centralized error handling with meaningful responses
+
+---
+
+## �️ Tech Stack
+
+<table>
+<tr>
+<td valign="top" width="50%">
 
 ### Frontend
 
-- 🏠 Homepage with carousel, deals, categories
-- 📦 Product browsing with filters & search
-- 🛒 Shopping cart with quantity controls
-- 🔐 User authentication (login/register)
-- 📱 Fully responsive design
+| Technology | Purpose |
+|------------|---------|
+| React 18 | UI Library |
+| React Router | Client-side routing |
+| Context API | State management |
+| Vite | Build tool |
+| CSS3 | Styling |
+| Lucide React | Icons |
 
-### Backend Security
+</td>
+<td valign="top" width="50%">
 
-- 🔒 JWT with HTTP-only cookies
-- 🔑 bcrypt password hashing (12 rounds)
-- 🛡️ Helmet.js security headers
-- ⏱️ Rate limiting (5 auth attempts/15min)
-- 🌐 CORS origin validation
-- ✅ Express-validator input sanitization
+### Backend
 
-### Database
+| Technology | Purpose |
+|------------|---------|
+| Node.js | Runtime |
+| Express.js | Web framework |
+| MongoDB | Database |
+| Mongoose | ODM |
+| JWT | Authentication |
+| bcrypt | Password hashing |
 
-- 📊 MongoDB with Mongoose ODM
-- 👤 User model with secure password handling
-- 📦 Product model with search indexes
-- 🛒 Cart & Order models
+</td>
+</tr>
+</table>
 
-## 🚀 Quick Start
+### Security & DevOps
+
+`Helmet.js` `CORS` `express-rate-limit` `cookie-parser` `GitHub Pages` `Git`
+
+---
+
+## 📁 Project Structure
+
+```
+amazon-clone/
+├── src/                          # Frontend (React)
+│   ├── components/               # Reusable UI components
+│   │   ├── Header/              # Navigation with search & cart
+│   │   ├── Footer/              # Site footer
+│   │   ├── ProductCard/         # Product display card
+│   │   └── Carousel/            # Hero banner slider
+│   ├── pages/                   # Route pages
+│   │   ├── Home/                # Landing page
+│   │   ├── Products/            # Product listing with filters
+│   │   ├── ProductDetail/       # Single product view
+│   │   ├── Cart/                # Shopping cart
+│   │   └── Login & Register/    # Authentication pages
+│   ├── context/                 # Global state
+│   │   ├── CartContext.jsx      # Cart state management
+│   │   └── AuthContext.jsx      # User authentication state
+│   └── services/                # API integration
+│       └── api.js               # HTTP client with interceptors
+│
+├── backend/                      # Backend (Express.js)
+│   ├── config/
+│   │   └── database.js          # MongoDB connection
+│   ├── models/                  # Mongoose schemas
+│   │   ├── User.js              # User with password methods
+│   │   ├── Product.js           # Product with search index
+│   │   ├── Cart.js              # User cart
+│   │   └── Order.js             # Order with status tracking
+│   ├── routes/                  # API endpoints
+│   │   ├── auth.js              # Authentication routes
+│   │   ├── products.js          # Product CRUD
+│   │   ├── cart.js              # Cart operations
+│   │   └── orders.js            # Order management
+│   ├── middleware/              # Express middleware
+│   │   ├── auth.js              # JWT verification
+│   │   └── validation.js        # Input sanitization
+│   └── server.js                # Application entry point
+```
+
+---
+
+## � API Documentation
+
+### Authentication Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/auth/register` | Create new user account |
+| `POST` | `/api/auth/login` | Authenticate user |
+| `POST` | `/api/auth/logout` | Clear session |
+| `POST` | `/api/auth/refresh` | Refresh access token |
+| `GET` | `/api/auth/me` | Get current user (protected) |
+
+### Product Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/products` | List all products (with filters) |
+| `GET` | `/api/products/:id` | Get single product |
+| `GET` | `/api/products/meta/categories` | Get categories |
+
+### Cart Endpoints (Protected)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/cart` | Get user's cart |
+| `POST` | `/api/cart/add` | Add item to cart |
+| `PUT` | `/api/cart/update/:id` | Update quantity |
+| `DELETE` | `/api/cart/remove/:id` | Remove item |
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
 - Node.js 18+
-- MongoDB (local or [MongoDB Atlas](https://www.mongodb.com/atlas))
+- MongoDB (local or Atlas)
+- Git
 
 ### Installation
 
 ```bash
-# Clone repository
+# Clone the repository
 git clone https://github.com/Satya136-dvsn/Amazon_clone.git
 cd Amazon_clone
 
@@ -53,9 +207,13 @@ npm install
 # Install backend dependencies
 cd backend
 npm install
+
+# Create environment file
+cp .env.example .env
+# Edit .env with your MongoDB URI and secrets
 ```
 
-### Local Development
+### Running Locally
 
 ```bash
 # Terminal 1: Start backend (port 5000)
@@ -66,190 +224,42 @@ npm run dev
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173)
+Visit `http://localhost:5173`
 
 ---
 
-## 🌐 Deployment Guide
+## 🎯 What I Learned
 
-### Option 1: Vercel (Frontend) + Railway (Backend)
-
-#### Step 1: Deploy Backend to Railway
-
-1. Create account at [railway.app](https://railway.app)
-2. Click **"New Project"** → **"Deploy from GitHub Repo"**
-3. Select the `Amazon_clone` repo, set root directory to `backend`
-4. Add MongoDB plugin (or use MongoDB Atlas)
-5. Set environment variables:
-
-```env
-NODE_ENV=production
-JWT_SECRET=<generate-64-char-random-string>
-JWT_REFRESH_SECRET=<generate-another-64-char-string>
-COOKIE_SECRET=<generate-32-char-string>
-MONGODB_URI=<your-mongodb-connection-string>
-FRONTEND_URL=https://your-app.vercel.app
-```
-
-1. Copy your Railway backend URL (e.g., `https://amazon-clone-backend.up.railway.app`)
-
-#### Step 2: Deploy Frontend to Vercel
-
-1. Go to [vercel.com](https://vercel.com) and import your GitHub repo
-2. Set environment variable:
-
-   ```
-   VITE_API_URL=https://your-railway-backend-url/api
-   ```
-
-3. Deploy!
-
-### Option 2: MongoDB Atlas Setup
-
-1. Create free account at [mongodb.com/atlas](https://www.mongodb.com/atlas)
-2. Create a cluster (free tier available)
-3. Create database user with password
-4. Whitelist IP addresses (0.0.0.0/0 for all)
-5. Get connection string from MongoDB Atlas dashboard
-
-6. Add your connection string to backend `.env` as `MONGODB_URI`
-
-### Option 3: Seed Database
-
-```bash
-cd backend
-node seed.js
-```
+- **React Patterns** - Component composition, custom hooks, context management
+- **API Security** - JWT flow, secure cookie handling, rate limiting strategies
+- **Database Design** - Schema modeling, indexing, data relationships
+- **DevOps Basics** - CI/CD concepts, environment management, deployment
 
 ---
 
-## 🔧 Environment Variables
+## 📈 Future Enhancements
 
-### Backend (.env)
-
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `PORT` | Server port | `5000` |
-| `NODE_ENV` | Environment | `production` |
-| `MONGODB_URI` | MongoDB connection | `mongodb+srv://...` |
-| `JWT_SECRET` | JWT signing key | Random 64 chars |
-| `JWT_REFRESH_SECRET` | Refresh token key | Random 64 chars |
-| `COOKIE_SECRET` | Cookie signing | Random 32 chars |
-| `FRONTEND_URL` | CORS origin | `https://app.vercel.app` |
-
-### Frontend (.env)
-
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `VITE_API_URL` | Backend API URL | `https://api.railway.app/api` |
-
-### Generate Secrets
-
-```bash
-node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
-```
+- [ ] Payment integration (Stripe/Razorpay)
+- [ ] Order tracking with real-time updates
+- [ ] Product reviews and ratings
+- [ ] Admin dashboard for inventory
+- [ ] Email notifications
 
 ---
 
-## 🏗️ Project Structure
+## 👨‍� Author
 
-```
-├── src/                    # Frontend (React + Vite)
-│   ├── components/         # Header, Footer, ProductCard, Carousel
-│   ├── pages/              # Home, Products, ProductDetail, Cart, Login
-│   ├── context/            # CartContext, AuthContext
-│   └── services/           # API service layer
-│
-├── backend/                # Backend (Express.js)
-│   ├── config/
-│   │   └── database.js     # MongoDB connection
-│   ├── models/
-│   │   ├── User.js         # User schema + bcrypt
-│   │   ├── Product.js      # Product schema
-│   │   ├── Cart.js         # Cart schema
-│   │   └── Order.js        # Order schema
-│   ├── routes/
-│   │   ├── auth.js         # Authentication
-│   │   ├── products.js     # Products API
-│   │   ├── cart.js         # Cart API
-│   │   └── orders.js       # Orders API
-│   ├── middleware/
-│   │   ├── auth.js         # JWT verification
-│   │   └── validation.js   # Input sanitization
-│   ├── server.js           # Express server
-│   ├── seed.js             # Database seeder
-│   ├── railway.toml        # Railway config
-│   └── Procfile            # Heroku/Railway
-│
-├── vercel.json             # Vercel config
-└── README.md
-```
+**Satya** - Full-Stack Developer
+
+[![GitHub](https://img.shields.io/badge/GitHub-Satya136--dvsn-181717?style=flat-square&logo=github)](https://github.com/Satya136-dvsn)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/your-profile)
 
 ---
 
-## 📋 API Endpoints
+<div align="center">
 
-### Authentication
+### ⭐ Star this repo if you found it helpful
 
-| Method | Endpoint | Auth Required |
-|--------|----------|---------------|
-| POST | `/api/auth/register` | ❌ |
-| POST | `/api/auth/login` | ❌ |
-| POST | `/api/auth/logout` | ❌ |
-| POST | `/api/auth/refresh` | ❌ |
-| GET | `/api/auth/me` | ✅ |
-| POST | `/api/auth/change-password` | ✅ |
+*Built with ❤️ using the MERN Stack*
 
-### Products
-
-| Method | Endpoint | Auth Required |
-|--------|----------|---------------|
-| GET | `/api/products` | ❌ |
-| GET | `/api/products/:id` | ❌ |
-| GET | `/api/products/meta/categories` | ❌ |
-
-### Cart
-
-| Method | Endpoint | Auth Required |
-|--------|----------|---------------|
-| GET | `/api/cart` | ✅ |
-| POST | `/api/cart/add` | ✅ |
-| PUT | `/api/cart/update/:id` | ✅ |
-| DELETE | `/api/cart/remove/:id` | ✅ |
-| DELETE | `/api/cart/clear` | ✅ |
-
-### Orders
-
-| Method | Endpoint | Auth Required |
-|--------|----------|---------------|
-| POST | `/api/orders` | ✅ |
-| GET | `/api/orders` | ✅ |
-| GET | `/api/orders/:id` | ✅ |
-| POST | `/api/orders/:id/cancel` | ✅ |
-
----
-
-## 🧪 Production Checklist
-
-- [ ] Generate strong random secrets for JWT and cookies
-- [ ] Set up MongoDB Atlas with proper IP whitelist
-- [ ] Configure CORS with production frontend URL
-- [ ] Enable HTTPS (automatic on Vercel/Railway)
-- [ ] Set `NODE_ENV=production`
-- [ ] Run database seeder (`node seed.js`)
-- [ ] Test all authentication flows
-- [ ] Verify rate limiting is working
-
----
-
-## 📄 License
-
-MIT License - Educational project, not affiliated with Amazon.
-
-## 👤 Author
-
-**Satya** - [GitHub](https://github.com/Satya136-dvsn)
-
----
-
-⭐ Star this repo if you found it helpful!
+</div>
