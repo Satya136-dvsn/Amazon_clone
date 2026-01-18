@@ -110,17 +110,9 @@ FRONTEND_URL=https://your-app.vercel.app
 2. Create a cluster (free tier available)
 3. Create database user with password
 4. Whitelist IP addresses (0.0.0.0/0 for all)
-5. Get connection string:
+5. Get connection string from MongoDB Atlas dashboard
 
-   ```
-   mongodb+srv://<username>:<password>@cluster.mongodb.net/amazon-clone
-   ```
-
-6. Add to backend `.env`:
-
-   ```env
-   MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/amazon-clone
-   ```
+6. Add your connection string to backend `.env` as `MONGODB_URI`
 
 ### Option 3: Seed Database
 
