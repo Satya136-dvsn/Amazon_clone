@@ -15,7 +15,8 @@ import './index.css';
 // Layout component that conditionally renders Header/Footer
 const Layout = ({ children }) => {
   const location = useLocation();
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+  // Use endsWith to handle both local and GitHub Pages paths
+  const isAuthPage = location.pathname.endsWith('/login') || location.pathname.endsWith('/register');
 
   if (isAuthPage) {
     return <>{children}</>;
@@ -31,8 +32,11 @@ const Layout = ({ children }) => {
 };
 
 function App() {
+  // Use basename for GitHub Pages deployment (remove for other deployments)
+  const basename = import.meta.env.BASE_URL || '/';
+
   return (
-    <Router>
+    <Router basename={basename}>
       <AuthProvider>
         <CartProvider>
           <Layout>
