@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import Header from './components/Header/Header';
@@ -15,8 +15,7 @@ import './index.css';
 // Layout component that conditionally renders Header/Footer
 const Layout = ({ children }) => {
   const location = useLocation();
-  // Use endsWith to handle both local and GitHub Pages paths
-  const isAuthPage = location.pathname.endsWith('/login') || location.pathname.endsWith('/register');
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
 
   if (isAuthPage) {
     return <>{children}</>;
@@ -32,11 +31,8 @@ const Layout = ({ children }) => {
 };
 
 function App() {
-  // Use basename for GitHub Pages deployment (remove for other deployments)
-  const basename = import.meta.env.BASE_URL || '/';
-
   return (
-    <Router basename={basename}>
+    <Router>
       <AuthProvider>
         <CartProvider>
           <Layout>
