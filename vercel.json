@@ -1,0 +1,46 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "name": "amazon-clone",
+    "version": 2,
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
+    "framework": "vite",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "regions": [
+        "bom1"
+    ],
+    "env": {
+        "VITE_API_URL": "@api_url"
+    },
+    "build": {
+        "env": {
+            "VITE_API_URL": "@api_url"
+        }
+    },
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "X-Content-Type-Options",
+                    "value": "nosniff"
+                },
+                {
+                    "key": "X-Frame-Options",
+                    "value": "DENY"
+                },
+                {
+                    "key": "X-XSS-Protection",
+                    "value": "1; mode=block"
+                }
+            ]
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/((?!api/).*)",
+            "destination": "/index.html"
+        }
+    ]
+}
