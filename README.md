@@ -252,7 +252,7 @@ Visit `http://localhost:5173`
 **Satya** - Full-Stack Developer
 
 [![GitHub](https://img.shields.io/badge/GitHub-Satya136--dvsn-181717?style=flat-square&logo=github)](https://github.com/Satya136-dvsn)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)]([https://linkedin.com/in/your-profile](https://www.linkedin.com/in/venkatasatyanarayana-duba-679372255))
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/venkatasatyanarayana-duba-679372255)
 
 ---
 
